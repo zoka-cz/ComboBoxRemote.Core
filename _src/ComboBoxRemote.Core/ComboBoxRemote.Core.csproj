@@ -1,0 +1,70 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+    <AssemblyName>Zoka.ComboBoxRemote</AssemblyName>
+    <RootNamespace>Zoka.ComboBoxRemote</RootNamespace>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>0.9.0</Version>
+    <Authors>Zoka</Authors>
+    <Company>Zoka</Company>
+    <Description>ASP.NET Core view component which allows user to load combobox options remotely when drawn at the client side. It allows multiselect.</Description>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/zoka-cz/ComboBoxRemote.Core</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/zoka-cz/ComboBoxRemote.Core</RepositoryUrl>
+    <RepositoryType>Github</RepositoryType>
+    <PackageId>Zoka.ComboBoxRemote.Core</PackageId>
+	  <GenerateEmbeddedFilesManifest>true</GenerateEmbeddedFilesManifest>
+
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <DocumentationFile>bin\XMLDocs\Zoka.ComboBoxRemote.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <DocumentationFile>bin\XMLDocs\Zoka.ComboBoxRemote.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="node_modules\%40types\jquery\package.json" />
+    <Content Include="node_modules\%40types\sizzle\package.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="node_modules\%40types\jquery\dist\jquery.slim.d.ts" />
+    <None Include="node_modules\%40types\jquery\index.d.ts" />
+    <None Include="node_modules\%40types\jquery\JQuery.d.ts" />
+    <None Include="node_modules\%40types\jquery\JQueryStatic.d.ts" />
+    <None Include="node_modules\%40types\jquery\legacy.d.ts" />
+    <None Include="node_modules\%40types\jquery\LICENSE" />
+    <None Include="node_modules\%40types\jquery\misc.d.ts" />
+    <None Include="node_modules\%40types\jquery\README.md" />
+    <None Include="node_modules\%40types\sizzle\index.d.ts" />
+    <None Include="node_modules\%40types\sizzle\LICENSE" />
+    <None Include="node_modules\%40types\sizzle\README.md" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Zoka.IInjectable.Core" Version="0.9.8" />
+    <PackageReference Include="Zoka.IMetadataAwareCore" Version="0.9.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\" />
+    <Folder Include="wwwroot\lib\ComboBoxRemote\" />
+  </ItemGroup>
+
+
+</Project>

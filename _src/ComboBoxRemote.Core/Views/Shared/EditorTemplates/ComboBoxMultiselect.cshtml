@@ -1,0 +1,10 @@
+﻿@using Zoka.ComboBoxRemote
+@model System.Collections.IEnumerable
+@inject IServiceProvider ServiceProvider
+@{
+	var data_provider = ServiceProvider.GetService(ViewData.ModelMetadata.AdditionalValues["DataProviderType"] as Type) as IComboBoxDataProvider;
+	var multiselect = (bool)ViewData.ModelMetadata.AdditionalValues["Multiselect"];
+	var data = data_provider.GetComboBoxItems(User).ToList();
+}
+
+@Html.ListBox(null, data, new { @class = "form-control ComboBox ComboBoxMultiselect" })
