@@ -6,7 +6,6 @@
     <AssemblyName>Zoka.ComboBoxRemote</AssemblyName>
     <RootNamespace>Zoka.ComboBoxRemote</RootNamespace>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <Version>0.9.0</Version>
     <Authors>Zoka</Authors>
     <Company>Zoka</Company>
     <Description>ASP.NET Core view component which allows user to load combobox options remotely when drawn at the client side. It allows multiselect.</Description>
