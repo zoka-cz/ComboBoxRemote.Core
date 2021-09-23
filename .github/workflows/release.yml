@@ -21,9 +21,10 @@ jobs:
     - name: Build
       run: dotnet build "_src\ComboBoxRemote.Core\ComboBoxRemote.Core.csproj" --configuration Release /p:Version=${VERSION}
     - name: Publish Zoka.ComboBoxRemote.Core nuget to nuget.org
-      uses: zoka-cz/publish-nuget@master
+      uses: brandedoutcast/publish-nuget@v2.5.2
       with:
           PROJECT_FILE_PATH: _src/ComboBoxRemote.Core/ComboBoxRemote.Core.csproj
           NUGET_KEY: ${{secrets.NUGET_API_KEY}}
           VERSION_STATIC: $VERSION
           TAG_COMMIT: false
+          INCLUDE_SYMBOLS: false
