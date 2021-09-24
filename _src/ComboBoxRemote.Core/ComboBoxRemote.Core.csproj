@@ -29,8 +29,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="tsconfig.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="node_modules\%40types\jquery\package.json" />
     <Content Include="node_modules\%40types\sizzle\package.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="tsconfig.json" />
   </ItemGroup>
 
   <ItemGroup>
