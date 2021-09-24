@@ -4,6 +4,8 @@
         "noImplicitAny": false,
         "noEmitOnError": true,
         "removeComments": false,
+        "declaration": true,
+        "declarationDir": "node_modules/@types/",
         "sourceMap": true,
         "target": "es5",
         "lib": [ "ES5", "DOM" ],
