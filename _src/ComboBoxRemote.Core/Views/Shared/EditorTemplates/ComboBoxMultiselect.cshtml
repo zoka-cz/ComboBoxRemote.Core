@@ -3,8 +3,20 @@
 @inject IServiceProvider ServiceProvider
 @{
 	var data_provider = ServiceProvider.GetService(ViewData.ModelMetadata.AdditionalValues["DataProviderType"] as Type) as IComboBoxDataProvider;
+	if (data_provider == null)
+	{
+		throw new Exception($"Could not get the DataProvider of {(ViewData.ModelMetadata.AdditionalValues["DataProviderType"] as Type)?.FullName ?? "Unknown"} type. Make sure is is registered in ServiceProvider");
+	}
 	var is_remote = ViewData.ModelMetadata.AdditionalValues.ContainsKey("IsRemote") && (bool)ViewData.ModelMetadata.AdditionalValues["IsRemote"];
-	var data = await data_provider.GetComboBoxItemsAsync(User);
+	IEnumerable<SelectListItem> data;
+	try
+	{
+		data = await data_provider.GetComboBoxItemsAsync(User);
+	}
+	catch (Exception ex)
+	{
+		throw new AggregateException($"Error getting data from data provider of {data_provider.GetType().FullName} type. Error is described in the inner exception.", ex);
+	}
 }
 
 @Html.ListBox(null, data, new { @class = $"form-control ComboBox{(is_remote ? " ComboBoxRemote" : "")} ComboBoxMultiselect" })
