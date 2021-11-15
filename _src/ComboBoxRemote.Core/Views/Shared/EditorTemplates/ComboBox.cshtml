@@ -4,7 +4,7 @@
 @{
 	var data_provider = ServiceProvider.GetService(ViewData.ModelMetadata.AdditionalValues["DataProviderType"] as Type) as IComboBoxDataProvider;
 	var is_remote = ViewData.ModelMetadata.AdditionalValues.ContainsKey("IsRemote") && (bool)ViewData.ModelMetadata.AdditionalValues["IsRemote"];
-	var data = data_provider.GetComboBoxItems(User).ToList();
+	var data = await data_provider.GetComboBoxItemsAsync(User);
 }
 
 @Html.DropDownList(null, data, new { @class = $"form-control ComboBox{(is_remote ? " ComboBoxRemote" : "")}" })

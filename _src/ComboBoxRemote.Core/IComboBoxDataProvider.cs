@@ -11,6 +11,6 @@ namespace Zoka.ComboBoxRemote
 	public interface IComboBoxDataProvider : IInjectable.IInjectable
 	{
 		/// <summary>Returns the list of items (SelectListItem), which is displayed in the ComboBox</summary>
-		IEnumerable<SelectListItem> GetComboBoxItems(ClaimsPrincipal _claims_principal);
+		Task<IEnumerable<SelectListItem>> GetComboBoxItemsAsync(ClaimsPrincipal _claims_principal);
 	}
 }
