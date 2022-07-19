@@ -15,7 +15,7 @@ namespace ComboBoxRemote.Core.Tester.ViewModels
 		[Required]
 		public IEnumerable<string>							StringsSelector { get; set; }
 
-		[Zoka.ComboBoxRemote.ComboBoxRemote(typeof(StringDataRemoteProvider))]
+		[Zoka.ComboBoxRemote.ComboBoxRemote(typeof(StringDataRemoteProvider), Param1 = 15)]
 		public string										StringRemoteSelector { get; set; }
 	}
 }

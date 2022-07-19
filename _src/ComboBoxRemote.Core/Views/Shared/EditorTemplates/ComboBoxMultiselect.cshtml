@@ -2,6 +2,7 @@
 @model System.Collections.IEnumerable
 @inject IServiceProvider ServiceProvider
 @{
+	var param1 = ViewData.ModelMetadata.AdditionalValues["Param1"];
 	var data_provider = ServiceProvider.GetService(ViewData.ModelMetadata.AdditionalValues["DataProviderType"] as Type) as IComboBoxDataProvider;
 	if (data_provider == null)
 	{
@@ -11,7 +12,7 @@
 	IEnumerable<SelectListItem> data;
 	try
 	{
-		data = await data_provider.GetComboBoxItemsAsync(User);
+		data = await data_provider.GetComboBoxItemsAsync(User, param1);
 	}
 	catch (Exception ex)
 	{

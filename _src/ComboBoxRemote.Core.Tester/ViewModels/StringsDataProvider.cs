@@ -10,7 +10,7 @@ namespace ComboBoxRemote.Core.Tester.ViewModels
 	public class StringsDataProvider : Zoka.ComboBoxRemote.IComboBoxDataProvider
 	{
 		/// <inheritdoc />
-		public Task<IEnumerable<SelectListItem>> GetComboBoxItemsAsync(ClaimsPrincipal _claims_principal)
+		public Task<IEnumerable<SelectListItem>> GetComboBoxItemsAsync(ClaimsPrincipal _claims_principal, object _param1)
 		{
 			var strings = new string [] {
 				"String 01",

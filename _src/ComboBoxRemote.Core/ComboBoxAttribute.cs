@@ -15,6 +15,8 @@ namespace Zoka.ComboBoxRemote
 		public Type											DataProvider { get; set; }
 		/// <summary>If true, the user may select multiple choices from ComboBox instead of only single</summary>
 		public bool											Multiselect { get; set; }
+		/// <summary>Optional parameter </summary>
+		public object										Param1 { get; set; }
 
 		/// <summary>Constructor</summary>
 		public ComboBoxAttribute(Type _data_provider)
@@ -27,6 +29,7 @@ namespace Zoka.ComboBoxRemote
 		{
 			context.DisplayMetadata.AdditionalValues.Add("DataProviderType", DataProvider);
 			context.DisplayMetadata.AdditionalValues.Add("Multiselect", Multiselect);
+			context.DisplayMetadata.AdditionalValues.Add("Param1", Param1);
 			context.DisplayMetadata.TemplateHint = Multiselect ? "ComboBoxMultiselect" : "ComboBox";
 		}
 	}

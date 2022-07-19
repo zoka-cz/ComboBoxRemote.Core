@@ -28,7 +28,7 @@ namespace ComboBoxRemote.Core.Tester.Controllers
 		{
 			if (ModelState.IsValid)
 			{
-				ViewBag.Message = string.Join(", ", model.StringsSelector.Prepend(model.IntSelector.ToString()));
+				ViewBag.Message = $"{model.IntSelector}<br/>{string.Join(", ", model.StringsSelector)}<br/>15 + item index: {model.StringRemoteSelector}";
 			}
 			else
 			{
