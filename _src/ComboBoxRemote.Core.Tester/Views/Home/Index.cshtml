@@ -1,4 +1,5 @@
-﻿@{
+﻿@using ComboBoxRemote.Core.Tester.ViewModels
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -8,17 +9,18 @@
 </div>
 
 <div>
-    @using (Html.BeginForm())
-    {
-        if (ViewBag.Message != null)
-        {
-            <div class="alert alert-danger" role="alert">
-                @Html.Raw(ViewBag.Message)
-            </div>
-        }
+	@using (Html.BeginForm())
+	{
+		if (ViewBag.Message != null)
+		{
+			<div class="alert alert-danger" role="alert">
+				@Html.Raw(ViewBag.Message)
+			</div>
+		}
 
-	    @Html.EditorForModel()
+		@Html.EditorForModel()
 
-        <button type="submit">Save</button>
-    }
+		<button type="submit">Save</button>
+	}
+
 </div>

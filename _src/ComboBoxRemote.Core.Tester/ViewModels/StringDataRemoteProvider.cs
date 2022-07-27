@@ -7,22 +7,24 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace ComboBoxRemote.Core.Tester.ViewModels
 {
-	public class StringDataRemoteProvider : Zoka.ComboBoxRemote.IComboBoxDataProvider
+	public class StringDataRemoteProvider : Zoka.ComboBoxRemote.IComboBoxRemoteDataProvider
 	{
 		/// <inheritdoc />
-		public Task<IEnumerable<SelectListItem>> GetComboBoxItemsAsync(ClaimsPrincipal _claims_principal, object _param1)
+		public Task<IEnumerable<SelectListItem>> GetComboBoxItemsAsync(ClaimsPrincipal _claims_principal, string _param1)
 		{
+			var param = int.Parse(_param1);
+
 			var strings = new string [] {
-				"Remote String 01",
-				"Remote String 02",
-				"Remote String 03",
-				"Remote String 04"
+				$"Remote String {0 + param:00}",
+				$"Remote String {1 + param:00}",
+				$"Remote String {2 + param:00}",
+				$"Remote String {3 + param:00}"
 			};
 			var items = new List<SelectListItem>();
 
 			for (int i = 0; i < strings.Length; i++)
 			{
-				items.Add(new SelectListItem(strings[i], (i + (int)_param1).ToString()));
+				items.Add(new SelectListItem(strings[i], (i + param).ToString()));
 			}
 
 			return Task.FromResult(items.AsEnumerable());

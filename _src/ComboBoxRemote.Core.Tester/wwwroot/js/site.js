@@ -5,7 +5,24 @@
 
 
 $(function () {
-	$(".ComboBox").ComboBox({ OnCreatedCallback: function (el) {
-		el.chosen();
-	}});
+	$(".ComboBox").ComboBox(
+		{
+			OnCreatedCallback: function (el) {
+				el.chosen();
+			},
+			OnItemsAddedCallback: function (el) {
+				el.trigger("chosen:updated");
+			}
+		}
+	);
+
+	$(".ComboBoxRemote").ComboBox({
+		OnCreatedCallback: function (el) {
+			el.chosen();
+		},
+		OnItemsAddedCallback: function (el) {
+			el.trigger("chosen:updated");
+		}
+	});
+
 });
