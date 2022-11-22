@@ -18,6 +18,9 @@ namespace ComboBoxRemote.Core.Tester.ViewModels
 
 	public class ComboBoxTesterModel
 	{
+		[Required]
+		public string Required { get; set; }
+
 		[Zoka.ComboBoxRemote.ComboBox(typeof(IntDataProvider))]
 		public int IntSelector { get; set; }
 

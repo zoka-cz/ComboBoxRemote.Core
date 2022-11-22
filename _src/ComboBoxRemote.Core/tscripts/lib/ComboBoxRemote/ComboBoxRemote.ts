@@ -48,6 +48,9 @@ module ComboBoxRemote {
 						$.each(data, (idx, item) =>  {
 							this.element.append($("<option>", { value: item.value }).text(item.text));
 						});
+						var initial_val = this.element.data("initial-value");
+						if (initial_val)
+							this.element.val(initial_val); 
 						if (this.options.OnItemsAddedCallback != null)
 							this.options.OnItemsAddedCallback(this.element);
 					}

@@ -31,6 +31,9 @@ var ComboBoxRemote;
                         $.each(data, function (idx, item) {
                             _this.element.append($("<option>", { value: item.value }).text(item.text));
                         });
+                        var initial_val = _this.element.data("initial-value");
+                        if (initial_val)
+                            _this.element.val(initial_val);
                         if (_this.options.OnItemsAddedCallback != null)
                             _this.options.OnItemsAddedCallback(_this.element);
                     }
@@ -72,4 +75,3 @@ var ComboBoxRemote;
         }
     });
 })(window, jQuery);
-///# sourceMappingURL=ComboBoxRemote.js.map
