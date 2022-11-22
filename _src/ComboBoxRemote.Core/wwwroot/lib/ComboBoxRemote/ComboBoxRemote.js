@@ -17,7 +17,9 @@ var ComboBoxRemote;
             this.options = options;
             if (this.element.hasClass("ComboBoxRemote")) {
                 var param1 = this.element.data("param1");
-                var param1val = jQuery("input[name='" + param1 + "']").val();
+                // param1 may be direct value, but also the other input. Try it first.
+                var param1selector = this.GetParamValueSelector(param1);
+                var param1val = jQuery("input[name='" + param1selector + "']").val();
                 if (!param1val)
                     param1val = param1;
                 $.ajax({
@@ -36,6 +38,15 @@ var ComboBoxRemote;
             }
             this.OnCreate();
         }
+        ComboBoxRemote.prototype.GetParamValueSelector = function (_param1) {
+            var thisname_arr = this.element.attr("name").split(".");
+            var thisname;
+            if (thisname_arr.length > 1)
+                thisname = thisname_arr.slice(0, thisname_arr.length - 1).join(".") + "." + _param1;
+            else
+                thisname = _param1;
+            return thisname;
+        };
         ComboBoxRemote.prototype.OnCreate = function () {
             if (this.options.OnCreatedCallback != null)
                 this.options.OnCreatedCallback(this.element);
@@ -61,4 +72,4 @@ var ComboBoxRemote;
         }
     });
 })(window, jQuery);
-////# sourceMappingURL=ComboBoxRemote.js.map
+///# sourceMappingURL=ComboBoxRemote.js.map

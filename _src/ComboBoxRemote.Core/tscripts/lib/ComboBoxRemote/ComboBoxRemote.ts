@@ -34,7 +34,9 @@ module ComboBoxRemote {
 			this.options = options;
 			if (this.element.hasClass("ComboBoxRemote")) {
 				let param1 = this.element.data("param1");
-				let param1val = jQuery("input[name='" + param1 + "']").val();
+				// param1 may be direct value, but also the other input. Try it first.
+				let param1selector = this.GetParamValueSelector(param1);
+				let param1val = jQuery("input[name='" + param1selector + "']").val();
 				if (!param1val)
 					param1val = param1;
 				$.ajax({
@@ -53,6 +55,17 @@ module ComboBoxRemote {
 			}
 
 			this.OnCreate();
+		}
+
+		private GetParamValueSelector(_param1: string): string {
+			let thisname_arr = this.element.attr("name").split(".");
+			let thisname;
+			if (thisname_arr.length > 1)
+				thisname = thisname_arr.slice(0, thisname_arr.length - 1).join(".") + "." + _param1;
+			else
+				thisname = _param1;
+
+			return thisname;
 		}
 
 		OnCreate() {

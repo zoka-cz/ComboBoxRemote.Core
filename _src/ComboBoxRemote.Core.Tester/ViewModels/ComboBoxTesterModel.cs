@@ -7,6 +7,15 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ComboBoxRemote.Core.Tester.ViewModels
 {
+	public class ComboBoxTesterSubModel
+	{
+		[HiddenInput(DisplayValue = false)]
+		public string										Param1Value { get; set; } = "Hi, Hello ";
+
+		[Zoka.ComboBoxRemote.ComboBoxRemote(typeof(SubStringDataRemoteProvider), Param1 = nameof(Param1Value))]
+		public string										StringRemoteSubselector { get; set; }
+	}
+
 	public class ComboBoxTesterModel
 	{
 		[Zoka.ComboBoxRemote.ComboBox(typeof(IntDataProvider))]
@@ -21,5 +30,7 @@ namespace ComboBoxRemote.Core.Tester.ViewModels
 
 		[Zoka.ComboBoxRemote.ComboBoxRemote(typeof(StringDataRemoteProvider), Param1 = nameof(Param1Value))]
 		public string										StringRemoteSelector { get; set; }
+
+		public ComboBoxTesterSubModel						SubStringRemoteSelector { get; set; } = new ComboBoxTesterSubModel();
 	}
 }
